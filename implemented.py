@@ -6,7 +6,6 @@ from service.user import UserService
 
 
 Session = sessionmaker(db)
-session = Session()
 
-user_dao = UserDAO(session)
+user_dao = UserDAO(Session())
 user_service = UserService(user_dao)

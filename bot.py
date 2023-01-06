@@ -9,7 +9,7 @@ from service.handlers import dp
 
 def main():
     create_logger("user_messages")
-    get_current_exchange_rate(Config.URL)
+    # get_current_exchange_rate(Config.URL)
     executor.start_polling(dp, skip_updates=True)
 
 

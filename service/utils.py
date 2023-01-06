@@ -1,8 +1,12 @@
 import json
+import logging
 
 from config import Config
 from implemented import user_service
 from dao.model.user import UserSchema
+
+
+logger = logging.getLogger("user_messages")
 
 
 class DataHandler:
@@ -45,3 +49,15 @@ class DataHandler:
         url = data.from_user.url
         data["from"]["url_address"] = url
         return UserSchema().dump(data["from"])
+
+    def is_user_existent(self, message):
+        is_exist_into_db = user_service. \
+            get_one_by_id(message.from_user.id)
+        if not is_exist_into_db:
+            try:
+                data = self.form_data(message)
+                user_service.create(data)
+                return False
+            except Exception as e:
+                logger.error(e)
+        return True
