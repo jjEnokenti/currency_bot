@@ -4,6 +4,6 @@
 .env
 venv/
 
-.log
+*.log
 data.json
 other/
