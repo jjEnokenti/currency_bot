@@ -5,7 +5,6 @@ from config import Config
 from implemented import user_service
 from dao.model.user import UserSchema
 
-
 logger = logging.getLogger("user_messages")
 
 
@@ -40,8 +39,8 @@ class DataHandler:
         answer = []
 
         for cur in data:
-            answer.append(f"{cur.get('count')} {cur.get('currency')} = "
-                          f"{round(float(cur.get('price')), 3)} RUB")
+            answer.append(f"1 {cur.get('name')} = "
+                          f"{round(float(cur.get('value')), 3)} RUB")
 
         return answer
 
